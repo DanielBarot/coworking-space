@@ -1,10 +1,9 @@
 package ch.clip.security6.simple.taskmanager.security.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
 
 @Setter
 @Getter
@@ -16,4 +15,12 @@ public class Benutzer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String vorname;
+    private String nachname;
+    private String passwort;
+    private String email;
+    @OneToMany(mappedBy="benutzer")
+    private ArrayList<Buchung> buchungen;
+
+
 }
